@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
+using UnityEngine.SceneManagement;
 
 public class TimerScript : MonoBehaviour
 {
@@ -24,5 +25,9 @@ public class TimerScript : MonoBehaviour
         string seconds = (time % 60).ToString("f2");
 
         TimerText.text = minutes + ":" + seconds;
+        if(timer == 500)
+        {
+            //GAMEOVER switch scenes
+        }
     }
 }

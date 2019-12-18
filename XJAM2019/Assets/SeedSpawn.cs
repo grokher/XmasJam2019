@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SeedSpawn : MonoBehaviour
 {
+   [SerializeField] private int dollo;
     private int seeds;
     private int plantedTrees;
     private bool enoughSeeds;
@@ -17,11 +18,27 @@ public class SeedSpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (enoughSeeds == true && seeds > 0)
+        if (enoughSeeds == true && seeds > 0 && Input.GetKeyDown(KeyCode.C))
         {
-            Instantiate(seed, new Vector3(transform.position.x + Random.Range(-1f,1f), transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0));
+            Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0));
             seeds--;
+            dollo += 10;
         }
-
+    }
+    private void Shop()
+    {
+        if (dollo >= 5)
+        {
+            seeds++;
+            dollo -= 5;
+        }
+        if (dollo >= 250)
+        {
+            //big bag
+        }
+        if (dollo >= 100)
+        {
+            //medium bagg
+        }
     }
 }
