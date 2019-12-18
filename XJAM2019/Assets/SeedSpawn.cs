@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System.IO;
 
 public class SeedSpawn : MonoBehaviour
 {
@@ -8,6 +11,8 @@ public class SeedSpawn : MonoBehaviour
     private int seeds;
     private int plantedTrees;
     private bool enoughSeeds;
+    private int Planted = 0;
+    public Text SeedText;
 
     public GameObject seed;
 
@@ -18,10 +23,12 @@ public class SeedSpawn : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(Planted);
         if (enoughSeeds == true && seeds > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0));
             seeds--;
+            Planted++;
             dollo += 10;
         }
         if (dollo >= 5)
@@ -37,9 +44,14 @@ public class SeedSpawn : MonoBehaviour
         {
             //medium bagg
         }
+        if (Planted >= 420)
+        {
+            End();
+        }
+        SeedText.text = "Seeds Planted: " + Planted.ToString();
     }
-    private void Shop()
+    private void End()
     {
-        
+        SceneManager.LoadScene("End");
     }
 }
