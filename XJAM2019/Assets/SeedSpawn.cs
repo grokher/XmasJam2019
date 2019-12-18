@@ -18,15 +18,12 @@ public class SeedSpawn : MonoBehaviour
     }
     private void Update()
     {
-        if (enoughSeeds == true && seeds > 0 && Input.GetKeyDown(KeyCode.C))
+        if (enoughSeeds == true && seeds > 0 && Input.GetKeyDown(KeyCode.Space))
         {
             Instantiate(seed, new Vector3(transform.position.x, transform.position.y, transform.position.z), new Quaternion(0, 0, 0, 0));
             seeds--;
             dollo += 10;
         }
-    }
-    private void Shop()
-    {
         if (dollo >= 5)
         {
             seeds++;
@@ -40,5 +37,9 @@ public class SeedSpawn : MonoBehaviour
         {
             //medium bagg
         }
+    }
+    private void Shop()
+    {
+        
     }
 }
